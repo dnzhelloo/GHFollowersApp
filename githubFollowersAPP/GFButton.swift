@@ -18,12 +18,10 @@ class GFButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(backgroundColor:UIColor,title:String) {
-        super.init(frame: .zero)
-        configuration?.baseBackgroundColor = backgroundColor
-        configuration?.baseForegroundColor = backgroundColor
-        configuration?.title = title
-        configure()
+    convenience init(backgroundColor:UIColor,title:String) {
+        self.init(frame: .zero)
+        set(color: backgroundColor, title: title)
+
     }
     
     private func configure(){
@@ -31,5 +29,11 @@ class GFButton: UIButton {
         configuration?.cornerStyle = .medium
         translatesAutoresizingMaskIntoConstraints = false
         
+    }
+    
+    final func set(color:UIColor,title:String){
+        configuration?.baseBackgroundColor = color
+        configuration?.baseForegroundColor = color
+        configuration?.title = title
     }
 }
